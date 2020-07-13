@@ -7,7 +7,7 @@
 
 It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 even in crowd in real time with live count status and notifies user(officer) if danger.
 
-### System Modules:
+#### System Modules:
   
 **1.) Deep Learning Model :** I trained a YOLOv2 and v3 on my own dataset and for YOLOv3 achieved **91%mAP on Test Set** even though my test set contained realistic blur images, small + medium + large faces which represent the real world images of average quality.  
   
@@ -15,3 +15,9 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 &nbsp;&nbsp;&nbsp; **i) Safe**\
 &nbsp;&nbsp;&nbsp; **ii) Warning**\
 &nbsp;&nbsp;&nbsp; **iii) Danger** ( SMS Alert )
+
+## Table of Contents
+1. Dataset
+2. Deep Learning Models
+3. Alert System
+4. References
