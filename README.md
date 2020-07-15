@@ -1,6 +1,8 @@
 
 
 
+
+
 # face-mask-detector
 𝐑𝐞𝐚𝐥-𝐓𝐢𝐦𝐞 𝐅𝐚𝐜𝐞 𝐦𝐚𝐬𝐤 𝐝𝐞𝐭𝐞𝐜𝐭𝐢𝐨𝐧 𝐮𝐬𝐢𝐧𝐠 𝐝𝐞𝐞𝐩𝐥𝐞𝐚𝐫𝐧𝐢𝐧𝐠 𝐰𝐢𝐭𝐡 𝐀𝐥𝐞𝐫𝐭 𝐬𝐲𝐬𝐭𝐞𝐦 💻🔔
 
@@ -28,8 +30,8 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 	1. [Image Sources](#1.-Image-Sources)
 	2. [Image Annotation](#2.-Image-Annotation) 
 	3. [Dataset Description](#3.-Dataset-Description)
-2. Deep Learning Models
-	1. Training
+2. [Deep Learning Models](#Deep-Learning-Models)
+	1. [Training](#1.-Training)
 	2. Model Performance 
 	3. Inference 
 3. Alert System
@@ -58,3 +60,43 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 - **Download the Dataset here**:
 	+ [Github Link](https://github.com/adityap27/face-mask-detector/tree/master/dataset) or
 	+ [Kaggle Link](https://www.kaggle.com/aditya276/face-mask-dataset-yolo-format)
+
+## Deep Learning Models
+
+### 1. Training
+- Install [Darknet](https://github.com/AlexeyAB/darknet) for Mac or Windows first.
+- I have trained Yolov2 and Yolov3 both.
+- Use following (linux) cmd to train:
+
+
+```console
+./darknet detector train obj.data yolo3.cfg darknet53.conv.74
+```
+- for windows use **darknet.exe** instead of ./darknet
+
+**YOLOv3 Training configs**
+
+- Data File = [obj.data](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov3-mask-detector/obj.data)
+- Cfg file  = [yolov3.cfg](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov3-mask-detector/yolov3.cfg)
+- Pretrained Weights for initialization= [darknet53.conv.74](https://pjreddie.com/media/files/darknet53.conv.74)
+- Main Configs from yolov3.cfg:
+	- learning_rate=0.001
+	- batch=64
+	- subdivisions=32
+	- steps=4800,5400
+	- max_batches = 6000
+	- i.e approx epochs = (6000*64)/700 = 548
+- **YOLOv3 Training results: _0.355751 avg loss_**
+
+**YOLOv2 Training configs**
+- Data File = [obj.data](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov2-mask-detector/obj.data)
+- Cfg file  = [yolov2.cfg](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov2-mask-detector/yolov2.cfg)
+- Pretrained Weights for initialization= [yolov2.conv.23](https://pjreddie.com/media/files/darknet19_448.conv.23)
+- Main Configs from yolov2.cfg:
+	- learning_rate=0.001
+	- batch=64
+	- subdivisions=16
+	- steps=1000,4700,5400
+	- max_batches = 6000
+	- i.e approx epochs = (6000*64)/700 = 548
+- **YOLOv2 Training results: _0.674141 avg loss_**
