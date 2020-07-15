@@ -27,14 +27,14 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 
 ## Table of Contents
 1. [Face-Mask Dataset](#Face-Mask-Dataset)
-	1. [Image Sources](#1.-Image-Sources)
-	2. [Image Annotation](#2.-Image-Annotation) 
-	3. [Dataset Description](#3.-Dataset-Description)
+	1. [Image Sources](#1-Image-Sources)
+	2. [Image Annotation](#2-Image-Annotation) 
+	3. [Dataset Description](#3-Dataset-Description)
 2. [Deep Learning Models](#Deep-Learning-Models)
-	1. [Training](#1.-Training)
-	2. [Model Performance](#2.-Model-Performance)
-	3. [Inference](#3.-Inference)
-		1. [Detection on Image](#3.1-Detection-on-Image)
+	1. [Training](#1-Training)
+	2. [Model Performance](#2-Model-Performance)
+	3. [Inference](#3-Inference)
+		1. [Detection on Image](#31-Detection-on-Image)
 		2. [Detection on Video]()
 		3. [Detection on WebCam]()
 3. Alert System
