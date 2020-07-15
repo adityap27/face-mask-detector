@@ -17,7 +17,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 
 **System Modules:**
   
-1. **Deep Learning Model :** I trained a YOLOv2 and v3 on my own dataset and for YOLOv3 achieved **91% mAP on Test Set** even though my test set contained realistic blur images, small + medium + large faces which represent the real world images of average quality.  
+1. **Deep Learning Model :** I trained a YOLOv2 and v3 on my own dataset and for YOLOv3 achieved **90% mAP on Test Set** even though my test set contained realistic blur images, small + medium + large faces which represent the real world images of average quality.  
   
 2. **Alert System:** It monitors the mask, no-mask counts and has 3 status :
 	1. **Safe :** When _all_ people are with mask.
@@ -32,8 +32,11 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 	3. [Dataset Description](#3.-Dataset-Description)
 2. [Deep Learning Models](#Deep-Learning-Models)
 	1. [Training](#1.-Training)
-	2. Model Performance 
-	3. Inference 
+	2. [Model Performance](#2.-Model-Performance)
+	3. [Inference](#3.-Inference)
+		1. [Detection on Image](#3.1-Detection-on-Image)
+		2. [Detection on Video]()
+		3. [Detection on WebCam]()
 3. Alert System
 4. Suggestions to improve Performance
 5. References
@@ -74,7 +77,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 ```
 - for windows use **darknet.exe** instead of ./darknet
 
-**YOLOv3 Training configs**
+**YOLOv3 Training details**
 
 - Data File = [obj.data](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov3-mask-detector/obj.data)
 - Cfg file  = [yolov3.cfg](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov3-mask-detector/yolov3.cfg)
@@ -87,8 +90,9 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 	- max_batches = 6000
 	- i.e approx epochs = (6000*64)/700 = 548
 - **YOLOv3 Training results: _0.355751 avg loss_**
+- **Weights** of YOLOv3 trained on Face-mask Dataset: [yolov3_face_mask.weights](https://bit.ly/yolov3_mask_weights)
 
-**YOLOv2 Training configs**
+**YOLOv2 Training details**
 - Data File = [obj.data](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov2-mask-detector/obj.data)
 - Cfg file  = [yolov2.cfg](https://raw.githubusercontent.com/adityap27/face-mask-detector/master/yolov2-mask-detector/yolov2.cfg)
 - Pretrained Weights for initialization= [yolov2.conv.23](https://pjreddie.com/media/files/darknet19_448.conv.23)
@@ -100,3 +104,40 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 	- max_batches = 6000
 	- i.e approx epochs = (6000*64)/700 = 548
 - **YOLOv2 Training results: _0.674141 avg loss_**
+-  **Weights** of YOLOv2 trained on Face-mask Dataset: [yolov2_face_mask.weights](https://bit.ly/yolov2_mask_weights)
+
+### 2. Model Performance
+- Below is the comparison of YOLOv2 and YOLOv3 on 3 sets.
+- **Metric is mAP@0.5** i.e Mean Average Precision.
+
+| Model | Training Set | Validation Set | Test Set |
+|:--:|:--:|:--:|:--:|
+| [YOLOv2](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv2%20Performance.jpg?raw=true) | 76.35% | 72.96% | 67.63% |
+| [YOLOv3](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv3%20Performance.jpg?raw=true) | 99.75% | 87.16% | 90.18% |
+- **Note:** For more detailed evaluation of model, click on model name above.
+- **Conclusion:**
+	- Yolov2 has **High bias** and **High Variance**, thus Poor Performance.
+	- Yolov3 has **Low bias** and **Medium Variance**, thus Good Performance.
+	- Model can still generalize well as discussed in section : [4. Suggestions to improve Performance]()
+
+### 3. Inference
+
+- You can run model inference or detection on image/video/webcam.
+- Two ways:
+	1. Using Darknet itself
+	2. Using Inference script (detection + alert)
+
+### 3.1 Detection on Image
+- Use command:
+	```
+	./darknet detector test obj.data yolov3.cfg yolov3_face_mask.weights input/1.jpg
+	```
+	OR
+- Use inference script
+	```
+	python mask-detector-image.py -y yolov3-mask-detector -i input\1.jpg
+	```
+- **Output Image:**
+	
+	![1_output.jpg](https://github.com/adityap27/face-mask-detector/blob/master/output/1_output.jpg?raw=true)
+		 
