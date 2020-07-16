@@ -35,11 +35,11 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 	2. [Model Performance](#2-Model-Performance)
 	3. [Inference](#3-Inference)
 		1. [Detection on Image](#31-Detection-on-Image)
-		2. [Detection on Video]()
-		3. [Detection on WebCam]()
-3. Alert System
-4. Suggestions to improve Performance
-5. References
+		2. [Detection on Video](#32-Detection-on-Video)
+		3. [Detection on WebCam](#33-Detection-on-WebCam)
+3. [Alert System](#Alert-System)
+4. [Suggestions to improve Performance](#Suggestions-to-improve-Performance)
+5. [References](#References)
 
 ## Face-Mask Dataset
 
@@ -118,7 +118,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 - **Conclusion:**
 	- Yolov2 has **High bias** and **High Variance**, thus Poor Performance.
 	- Yolov3 has **Low bias** and **Medium Variance**, thus Good Performance.
-	- Model can still generalize well as discussed in section : [4. Suggestions to improve Performance]()
+	- Model can still generalize well as discussed in section : [4. Suggestions to improve Performance](#Suggestions-to-improve-Performance)
 
 ### 3. Inference
 
@@ -130,14 +130,78 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 ### 3.1 Detection on Image
 - Use command:
 	```
-	./darknet detector test obj.data yolov3.cfg yolov3_face_mask.weights input/1.jpg
+	./darknet detector test obj.data yolov3.cfg yolov3_face_mask.weights input/1.jpg -thresh 0.45
 	```
 	OR
 - Use inference script
 	```
-	python mask-detector-image.py -y yolov3-mask-detector -i input\1.jpg
+	python mask-detector-image.py -y yolov3-mask-detector -i input/1.jpg
 	```
 - **Output Image:**
 	
 	![1_output.jpg](https://github.com/adityap27/face-mask-detector/blob/master/output/1_output.jpg?raw=true)
-		 
+
+
+### 3.2 Detection on Video
+- Use command:
+	```
+	./darknet detector demo obj.data yolov3.cfg yolov3_face_mask.weights <video-file> -thresh 0.45
+	```
+	OR
+- Use inference script
+	```
+	python mask-detector-video.py -y yolov3-mask-detector -i input/airport.mp4 -u 1
+	```
+	
+- **Output Video:**
+<p align="center">
+  <img src="https://github.com/adityap27/face-mask-detector/blob/master/media/readme-airport.gif?raw=true">
+</p>
+
+### 3.3 Detection on WebCam
+- Use command: (just remove input video file)
+	```
+	./darknet detector demo obj.data yolov3.cfg yolov3_face_mask.weights -thresh 0.45
+	```
+	OR
+- Use inference script: (just remove input video file)
+	```
+	python mask-detector-video.py -y yolov3-mask-detector -u 1
+	```
+	
+- **Output Video:**
+<p align="center">
+  <img src="https://github.com/adityap27/face-mask-detector/blob/master/media/readme-webcam.gif?raw=true">
+</p>
+	
+
+## Alert System
+- Alert system is present within the inference script code. 
+- You can modify the SMS alert code in script to customize ratio for sms if you want.
+- It monitors the mask, no-mask counts and has 3 status :
+	1. **Safe :** When _all_ people are with mask.
+	2. **Warning :** When _atleast 1_ person is without mask.
+	3. **Danger :** ( + SMS Alert ) When _some ratio_ of people are without mask.
+<p align="center">
+  <img src="https://github.com/adityap27/face-mask-detector/blob/master/media/readme-sms.jpg?raw=true">
+</p>
+
+## Suggestions to improve Performance
+- As described earlier that yolov3 is giving 90% mAP on Test Set, this can be improved by following tips if you want:
+
+	1. Use more Training Data.
+	2. Use more Data Augmentation for Training Data.
+	3. Train with larger network-resolution by setting your `.cfg-file` (height=640 and width=640) (any value multiple of 32).
+	4. For Detection use even larger network-resolution like 864x864.
+	5. Try YOLOv4 or YOLOv5 or any other Object Detection Algorithms like SSD, Faster-RCNN, RetinaNet, etc. as they are very good as of now (year 2020).
+
+
+
+## References
+- [YOLOv1 Paper](https://arxiv.org/abs/1506.02640)
+- [YOLOv2 Paper](https://arxiv.org/abs/1612.08242)
+- [YOLOv3 Paper](https://arxiv.org/abs/1804.02767)
+- [Darknet github Repo](https://github.com/AlexeyAB/darknet)
+- [YOLO Inference with GPU](https://www.pyimagesearch.com/2020/02/10/opencv-dnn-with-nvidia-gpus-1549-faster-yolo-ssd-and-mask-r-cnn/)
+
+
