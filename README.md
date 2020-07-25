@@ -112,7 +112,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 
 | Model | Training Set | Validation Set | Test Set |
 |:--:|:--:|:--:|:--:|
-| [YOLOv2](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv2%20Performance.jpg?raw=true) | 76.35% | 72.96% | 67.63% |
+| [YOLOv2](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv2%20Performance.jpg?raw=true) | 83.83% | 74.50% | 78.95% |
 | [YOLOv3](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv3%20Performance.jpg?raw=true) | 99.75% | 87.16% | 90.18% |
 - **Note:** For more detailed evaluation of model, click on model name above.
 - **Conclusion:**
