@@ -191,6 +191,8 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
   <img src="https://github.com/adityap27/face-mask-detector/blob/master/media/readme-webcam.gif?raw=true">
 </p>
 	
+### Note
+- All the results(images & videos) shown are output of yolov3, you can use yolov4 for better results.
 
 ## Alert System
 - Alert system is present within the inference script code. 
