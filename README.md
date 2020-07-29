@@ -206,7 +206,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 </p>
 
 ## Suggestions to improve Performance
-- As described earlier that yolov3 is giving 90% mAP on Test Set, this can be improved by following tips if you want:
+- As described earlier that yolov4 is giving 93.95% mAP on Test Set, this can be improved by following tips if you want:
 
 	1. Use more Training Data.
 	2. Use more Data Augmentation for Training Data.
