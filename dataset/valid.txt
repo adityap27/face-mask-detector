@@ -96,5 +96,5 @@
 /content/gdrive/My Drive/darknet/images/valid/KZJIS15WO6Beubo2G8EBQJpKpzIwOojzKyF02yshdNs.jpeg
 /content/gdrive/My Drive/darknet/images/valid/mark3-1024x607.jpeg
 /content/gdrive/My Drive/darknet/images/valid/mask2.jpeg
-/content/gdrive/My Drive/darknet/images/valid/img-1580446267-73019@900.jpeg
+/content/gdrive/My Drive/darknet/images/valid/img-1580446267-73019900.jpeg
 /content/gdrive/My Drive/darknet/images/valid/msk_1024.png
