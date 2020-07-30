@@ -143,7 +143,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 - Two ways:
 	1. Using Darknet itself
 	2. Using Inference script (detection + alert)
-
+- **Note:** If you are using yolov4 weights and cfg for inference, then make sure you use opencv>=4.4.0 else you will get ```Unsupported activation: mish ``` error.
 ### 3.1 Detection on Image
 - Use command:
 	```
