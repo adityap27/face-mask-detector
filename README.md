@@ -124,12 +124,13 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 ### 2. Model Performance
 - Below is the comparison of YOLOv2, YOLOv3 and YOLOv4 on 3 sets.
 - **Metric is mAP@0.5** i.e Mean Average Precision.
+- **Frames per Second (FPS)** was measured on **Google Colab GPU - Tesla P100-PCIE** using **Darknet** command: [link](https://github.com/AlexeyAB/darknet#how-to-evaluate-fps-of-yolov4-on-gpu)
 
-| Model | Training Set | Validation Set | Test Set |
-|:--:|:--:|:--:|:--:|
-| [YOLOv2](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv2%20Performance.jpg?raw=true) | 83.83% | 74.50% | 78.95% |
-| [YOLOv3](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv3%20Performance.jpg?raw=true) | 99.75% | 87.16% | 90.18% |
-| [YOLOv4](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv4%20Performance.jpg?raw=true) | 99.65% | 88.38% | 93.95% |
+| Model | Training Set | Validation Set | Test Set | FPS |
+|:--:|:--:|:--:|:--:|:--:|
+| [YOLOv2](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv2%20Performance.jpg?raw=true) | 83.83% | 74.50% | 78.95% | 45 FPS |
+| [YOLOv3](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv3%20Performance.jpg?raw=true) | 99.75% | 87.16% | 90.18% | 23 FPS |
+| [YOLOv4](https://github.com/adityap27/face-mask-detector/blob/master/media/YOLOv4%20Performance.jpg?raw=true) | 99.65% | 88.38% | 93.95% | 22 FPS |
 - **Note:** For more detailed evaluation of model, click on model name above.
 - **Conclusion:**
 	- Yolov2 has **High bias** and **High Variance**, thus Poor Performance.
