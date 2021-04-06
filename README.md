@@ -26,6 +26,7 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 
 
 ## Table of Contents
+- [Quick-Start : Just Run Inference](#Quick-Start)
 1. [Face-Mask Dataset](#Face-Mask-Dataset)
 	1. [Image Sources](#1-Image-Sources)
 	2. [Image Annotation](#2-Image-Annotation) 
@@ -41,6 +42,22 @@ It detects human faces with 𝐦𝐚𝐬𝐤 𝐨𝐫 𝐧𝐨-𝐦𝐚𝐬𝐤 
 4. [Suggestions to improve Performance](#Suggestions-to-improve-Performance)
 5. [References](#References)
 
+## Quick-Start
+**Step 1:**
+```
+git clone https://github.com/adityap27/face-mask-detector.git
+```
+Then, Download weights. https://bit.ly/yolov4_mask_weights and put in **yolov4-mask-detector** folder
+
+**Step 2: Install requirements.**
+```
+pip install opencv-python
+pip install imutils
+```
+**Step 3: Run yolov4 on webcam**
+```
+python mask-detector-video.py -y yolov4-mask-detector -u 1
+```
 ## Face-Mask Dataset
 
 ### 1. Image Sources
