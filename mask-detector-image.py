@@ -22,8 +22,8 @@ LABELS = open(labelsPath).read().strip().split("\n")
 COLORS = [[0,0,255],[0,255,0]]
 
 # derive the paths to the YOLO weights and model configuration
-weightsPath = os.path.sep.join([args["yolo"], "yolov3_face_mask.weights"])
-configPath = os.path.sep.join([args["yolo"], "yolov3.cfg"])
+weightsPath = os.path.sep.join([args["yolo"], "yolov4_face_mask.weights"])
+configPath = os.path.sep.join([args["yolo"], "yolov4-obj.cfg"])
 
 # load our YOLO object detector 
 print("[INFO] loading YOLO from disk...")
