@@ -22,7 +22,12 @@ ap.add_argument("-d", "--display", type=int, default=1,help="whether or not outp
 ap.add_argument("-c", "--confidence", type=float, default=0.45,help="minimum probability to filter weak detections")
 ap.add_argument("-t", "--threshold", type=float, default=0.3,help="threshold when applyong non-maxima suppression")
 ap.add_argument("-u", "--use-gpu", type=bool, default=0,help="boolean indicating if CUDA GPU should be used")
+ap.add_argument("-e", "--use-email", type=bool, default=0,help="boolean indicating if Emails need to be send or not")
 args = vars(ap.parse_args())
+
+# setup e-mail config if yes.
+if args["use_email"]:
+    from sendEmail import sendEmail
 
 # load the class labels our YOLO model was trained on
 labelsPath = os.path.sep.join([args["yolo"], "obj.names"])
@@ -132,19 +137,20 @@ while True:
     ratio=nomask_count/(mask_count+nomask_count+0.000001)
 
     
-    if ratio>=0.1 and nomask_count>=3:
+    if ratio>=0.1 and nomask_count>=1:
         text = "Danger !"
         cv2.putText(frame,text, (W-100, int(border_size-50)), cv2.FONT_HERSHEY_SIMPLEX,0.65,[26,13,247], 2)
         if fps._numFrames>=next_frame_towait: #to send danger sms again,only after skipping few seconds
-            msg="**Face Mask System Alert** %0A%0A"
-            msg+="Camera ID: C001 %0A%0A"            
-            msg+="Status: Danger! %0A%0A"
-            msg+="No_Mask Count: "+str(nomask_count)+" %0A"
-            msg+="Mask Count: "+str(mask_count)+" %0A"
+            msg="**Face Mask System Alert** \n\n"
+            msg+="Camera ID: C001 \n\n"            
+            msg+="Status: Danger! \n\n"
+            msg+="No_Mask Count: "+str(nomask_count)+" \n"
+            msg+="Mask Count: "+str(mask_count)+" \n"
             datetime_ist = datetime.now(IST) 
-            msg+="Date-Time of alert: %0A"+datetime_ist.strftime('%Y-%m-%d %H:%M:%S %Z')
-            sendSMS(msg,[7041677471])
-            print('Sms sent')
+            msg+="Date-Time of alert: \n"+datetime_ist.strftime('%Y-%m-%d %H:%M:%S %Z')
+            #sendSMS(msg,[7041677471])
+            #print('Sms sent')
+            sendEmail(msg)
             next_frame_towait=fps._numFrames+(5*25)
         
     elif ratio!=0 and np.isnan(ratio)!=True:
