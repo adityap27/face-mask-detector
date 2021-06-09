@@ -58,6 +58,7 @@ pip install imutils
 ```
 python mask-detector-video.py -y yolov4-mask-detector -u 1
 ```
+Optional: add ```-e 1``` for Email notifications.
 ## Face-Mask Dataset
 
 ### 1. Image Sources
@@ -213,6 +214,7 @@ python mask-detector-video.py -y yolov4-mask-detector -u 1
 - All the results(images & videos) shown are output of yolov3, you can use yolov4 for better results.
 
 ## Alert System
+- Update:  E-mail notification support is added now as SMS are paid. 
 - Alert system is present within the inference script code. 
 - You can modify the SMS alert code in script to customize ratio for sms if you want.
 - It monitors the mask, no-mask counts and has 3 status :
