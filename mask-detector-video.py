@@ -137,7 +137,7 @@ while True:
     ratio=nomask_count/(mask_count+nomask_count+0.000001)
 
     
-    if ratio>=0.1 and nomask_count>=1:
+    if ratio>=0.1 and nomask_count>=3:
         text = "Danger !"
         cv2.putText(frame,text, (W-100, int(border_size-50)), cv2.FONT_HERSHEY_SIMPLEX,0.65,[26,13,247], 2)
         if fps._numFrames>=next_frame_towait: #to send danger sms again,only after skipping few seconds
